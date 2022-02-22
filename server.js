@@ -55,6 +55,17 @@ app.get("/app/flips/:number", (req, res) => {
     res.status(200).json({ "raw" : array, "summary" : { "tails" : countFlips(array).tails, "heads" : countFlips(array).heads }})
 })
 
+// 6./7. Endpoint /app/flip/call/tails that returns the result of a random flip match against heads/tails as JSON
+function flipACoin(call) {
+    let flip = coinFlip();
+    return {call: call, flip: flip, result: flip == call ? "win" : "lose" }
+}
+app.get("/app/flip/call/:this_call", (req, res) => {
+    res.status(200).json(flipACoin(req.params["this_call"]))
+})
+
+// 8. ALL endpoints should return HTTP headers including a status code and the appropriate content type for the response.
+
 
 // 2. Default API endpoint that returns 404 Not found for any endpoints that are not defined
 app.use(function(req, res) {
