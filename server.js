@@ -19,6 +19,14 @@ app.get("/app", (req, res) => {
     //res.type("text/plain")
 })
 
+function coinFlip() {
+    return Math.random() > 0.5 ? ("heads") : ("tails")
+}
+
+app.get("/app/flip", (req, res) => {
+    res.status(200).json({ "flip" : coinFlip() })
+})
+
 // Default response for any other request
 app.use(function(req, res) {
     res.status(404).send("404: Endpoint does not exist")
