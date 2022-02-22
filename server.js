@@ -64,7 +64,7 @@ app.get("/app/flip/call/:this_call", (req, res) => {
     res.status(200).json(flipACoin(req.params["this_call"]))
 })
 
-// 8. ALL endpoints should return HTTP headers including a status code and the appropriate content type for the response.
+// 8. ALL endpoints should return HTTP headers including a status code and the appropriate content type for the response
 
 
 // 2. Default API endpoint that returns 404 Not found for any endpoints that are not defined
